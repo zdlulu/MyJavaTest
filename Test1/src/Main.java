@@ -1,32 +1,26 @@
 /*程序建立时间:2017/06/13
   主题：输入一个数比如说是4，
-  使用*图标输出半径为4的圆*/
-
-
-import java.text.DecimalFormat;
+  使用*画倒直线只画边缘线不画内容线和上一个例子是不同的*/
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.println("半径:");
-        int ir = Integer.parseInt(sc.nextLine());
-        System.out.println("半径设置为:"+ir);
+        System.out.println("直线行数:");
+        int input_num = Integer.parseInt(sc.nextLine());
+        System.out.println("倒直线设置为:"+input_num);
 
-        double r = ir;
-
-        for(double x=0;x<=r*2;x++){
-
-            DecimalFormat df = new DecimalFormat("#.00");//保留两位小数
-            double y = r+Math.sqrt(Math.pow(r,2)-Math.pow((x-r),2));
-//            System.out.println("y="+df.format(y));
-//            System.out.println("x="+df.format(x));
-
-            for(int j=0;j<y;j++){
-                System.out.print("*");
+        for(int i=0;i<input_num;i++){
+            for(int j=input_num;j>=0;j--){
+                if(i==j){
+                    System.out.print("*");
+                }else{
+                    System.out.print(" ");
+                }
             }
-            System.out.println();
+            System.out.println("");
         }
+
     }
 }
