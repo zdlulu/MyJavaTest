@@ -1,16 +1,25 @@
-import java.time.temporal.ValueRange;
+/*程序建立时间:2017/06/13
+  主题：在控制台显示乘法表*/
+
 
 public class Main {
 
     public static void main(String[] args) {
-        Cat cat1 = new Cat();
-        cat1.age = 1;
-        cat1.name = "小白";
-        cat1.color = "白色";
+        int[] arr_multi_first  = {1,2,3,4,5,6,7,8,9};
+        int[] arr_multi_second = {1,2,3,4,5,6,7,8,9};
 
-        Cat cat2 = new Cat();
-        cat2.age = 2;
-        cat2.name = "小灰";
-        cat2.color = "灰色";
+        for(int int_first:arr_multi_first){
+            String s = "";
+            for(int int_second:arr_multi_second){
+                if(int_second<=int_first){
+                    int result = int_first*int_second;
+                    s += int_first+"*"+int_second+"="+result+",";
+                    if(int_second==int_first){
+                        System.out.println(s);
+                    }
+                }
+            }
+
+        }
     }
 }
