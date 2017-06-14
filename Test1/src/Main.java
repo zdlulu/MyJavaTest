@@ -1,6 +1,6 @@
 /*程序建立时间:2017/06/13
-  主题：自定义截取字符串的方法，
-  使用：通过输入两个index的值，来截取某一个字符串的部分内容，并输出结果*/
+  主题：输入半径，
+  使用：画出一个*输出组成的圆*/
 import java.util.Scanner;
 import java.util.logging.Level;
 
@@ -9,38 +9,37 @@ public class Main {
     public static void main(String[] args) {
 
         /********************************************/
-        Scanner sc = new Scanner(System.in);
-        System.out.println("请输入字符串:");
-        String input_str = sc.nextLine();
-        System.out.println("输入的字符串为:"+input_str);
-        /********************************************/
-        System.out.println("请输入开始位置:");
-        int input_location = Integer.parseInt(sc.nextLine());
-        System.out.println("输入开始位置为:"+input_location);
-        /********************************************/
-        System.out.println("请输入转化长度:");
-        int input_len = Integer.parseInt(sc.nextLine());
-        System.out.println("输入转化长度为:"+input_len);
-        /********************************************/
-        String result = cut_str(input_str,input_location,input_len);
-        System.out.println("最终的转化结果为:"+result);
+        // TODO Auto-generated method stub
+        System.out.println("请输入圆的半径:");
+        Scanner in =new Scanner(System.in);
+        int radius = in.nextInt();//使用户能够从 System.in 中读取一个数
+        paint(radius);  //手动输入半径5
         /********************************************/
     }
 
-    private static String cut_str(String str, int begin, int length){
-        String result = "";
-        if(str!=null){
-            byte[] str_byte = str.getBytes();
-            int len_byte = str_byte.length;
-            if((begin+length)<=len_byte){
-                result = new String(str_byte,0,length);
-            }else{
-                System.out.println("字符串长度输入的有问题!!!!");
-            }
-        }else{
-            System.out.println("字符串输入为空!!!!");
+    public static void paint(int r){
+        int y = r*2;//y=10
+        int x = 0;
+        int c = 0;
+        int z = 2;
+        for(int j=r*2;j>=0;j=j-z){//j>=0 && j<=10 j=8,
+            x=getX(r,y);
+            System.out.print(getSpace(x)+"*");
+            c=(r-x)*2;
+            System.out.println(getSpace(c)+"*");
+            y-=z;
         }
-        return result;
     }
-
+    public static int getX(int r,int y){
+        int x=y-r;//x=5
+        double t=Math.sqrt((r*r)-(x*x));
+        return (int)Math.round(r-t);
+    }
+    public static String getSpace(int i){
+        String s = " ";
+        for(int j=0;j<i;j++){
+            s+=" ";
+        }
+        return s;
+    }
 }
