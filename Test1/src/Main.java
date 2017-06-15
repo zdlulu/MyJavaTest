@@ -1,6 +1,6 @@
-/*程序建立时间:2017/06/14
-  主题：变量调换
-  输出：输入两个变量的值，然后通过异或运算符来实现两个变量的互换
+/*程序建立时间:2017/06/15
+  主题：变量菱形
+  输出：输入1个变量的值，然后输出菱形框架
 */
 
 import java.util.Scanner;
@@ -10,18 +10,44 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.println("输入第一个:");
-        long A = sc.nextLong();
-        System.out.println("输入第一个:"+A);
+        System.out.println("输入行数:");
+        int num_line = sc.nextInt();
+        System.out.println("输入行数:"+num_line);
+        printHollowRhombus(num_line);
+    }
 
-        System.out.println("输入第二个:");
-        long B = sc.nextLong();
-        System.out.println("输入第一个:"+B);
+    public static void printHollowRhombus(int num_line){
+        if(num_line%2==0){
+            num_line++;
+        }
 
-        A = A^B;
-        B = B^A;
-        A = A^B;
-        System.out.println("A="+A+":B="+B);
+        for(int i=0;i<(num_line/2)+1;i++){
+            for(int j=(num_line/2)+1;j>i+1;j--){
+                System.out.print(" ");
+            }
+            for(int j=0;j<2*i+1;j++){
+                if(j==0||j==2*i){
+                    System.out.print("*");
+                }else{
+                    System.out.print(" ");
+                }
+            }
+            System.out.println("");
+        }
+        for(int i=(num_line/2)+1;i<num_line;i++){
+            for(int j=0;j<i-(num_line/2);j++){
+                System.out.print(" ");
+            }
+            for(int j=0;j<2*num_line-1-2*i;j++){
+                if(j==0||j==2*(num_line-i-1)){
+                    System.out.print("*");
+                }else{
+                    System.out.print(" ");
+                }
+            }
+            System.out.println("");
+        }
+
     }
 
 }
