@@ -1,10 +1,13 @@
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * Created by Administrator on 2017/6/29.
  */
-public class Frame629 {
+public class Frame629 implements ActionListener {
     private Frame frame;
+    private Button btn_1 = new Button();
 
     public Frame629(){}
 
@@ -30,16 +33,18 @@ public class Frame629 {
         l.add("三年级");
         frame.add(l);
         //Button组件
-        frame.add(new Button("测试按钮"));
+        btn_1.setLabel("退出按钮");
+        frame.add(btn_1);
+        btn_1.addActionListener(this);
         frame.pack();//调整窗口以容纳所有的组件
         frame.setVisible(true);//显示窗口
     }
 
-    public void frame_scan(){
-        frame.setVisible(true);
-    }
 
-    public void frame_exit(){
-        System.exit(0);
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource()==btn_1){
+            System.exit(0);
+        }
     }
 }
