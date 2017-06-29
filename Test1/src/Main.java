@@ -1,15 +1,31 @@
-import javax.swing.*;
+import java.util.Timer;
+import java.util.TimerTask;
 
-/**
- * Created by Administrator on 2017/6/28.
- * è¾“å‡ºï¼šé—¹é’Ÿçš„ç¨‹åºï¼Œæ²¡æœ‰æ˜ç™½ï¼Œç›´æ¥æŠ„è¢­çš„æºç 
+/*Created by Administrator on 2017/6/29.
+ *ÄÚÈİ£ºFrameµÚÒ»¸öJAVAµÄ´°Ìå³ÌĞò,´°ÌåÏÔÊ¾6Ãë¾Í×Ô¶¯ÏûÊ§,Í¨¹ıtimetask¼ÆÊ±Æ÷¼ÆÊ±
  */
 public class Main {
+    public static int i=0;
 
     public static void main(String[] args){
-        AlarmClock clock = new AlarmClock(1000, true);
-        clock.start();
-        JOptionPane.showMessageDialog(null, "æ˜¯å¦é€€å‡ºï¼Ÿ");
-        System.exit(0);
+        Frame629 f629 = new Frame629();
+        f629.do_frame();
+        f629.frame_scan();
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                if(i!=2){
+                    System.out.println("/////////////::::i="+i);
+                }else if(i==2){
+                    f629.frame_exit();
+                }
+                i++;
+            }
+        };
+        Timer timer = new Timer();
+        long delay = 0;
+        long intevalPeriod = 3*1000;
+        timer.scheduleAtFixedRate(task,delay,intevalPeriod);
     }
+
 }
